@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/tilesets/Dungeon Tileset.png" type="Texture" id=1]
+
+[node name="Dungeon Tileset" type="Node2D"]
+
+[node name="Sprite00" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 16, 16 )
+
+[node name="Sprite01" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 16, 16 )
+
+[node name="Sprite02" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 64, 16, 16 )
+
+[node name="Sprite03" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 80, 16, 16 )
+
+[node name="Sprite04" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 80, 16, 16 )
+
+[node name="Sprite05" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 80, 16, 16 )
+
+[node name="Sprite06" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 96, 16, 16 )
+
+[node name="Sprite07" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 96, 16, 16 )
+
+[node name="Sprite08" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 96, 16, 16 )
+
+[node name="Sprite09" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 112, 16, 16 )
+
+[node name="Sprite10" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 112, 16, 16 )
+
+[node name="Sprite11" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 112, 16, 16 )
+
+[node name="Sprite12" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 144, 16, 16 )
