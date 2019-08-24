@@ -85,8 +85,5 @@ animation = "idle"
 scale = Vector2( 0.25, 0.25 )
 enabled = true
 cast_to = Vector2( 0, 16 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 [connection signal="area_entered" from="." to="." method="_on_Mathias_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Mathias_area_exited"]

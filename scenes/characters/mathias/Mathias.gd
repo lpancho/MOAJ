@@ -12,6 +12,7 @@ var current_ladder = null
 signal move_ladder
 
 func _ready():
+	set_process(false)
 	pass
 
 func _process(delta):
@@ -39,7 +40,10 @@ func get_movedir():
 		movedir = Vector2.ZERO
 	
 	if movedir != Vector2.ZERO:
-		ray.cast_to = movedir * tile_size
+		if movedir.y == 1:
+			ray.cast_to = movedir * tile_size * 2
+		else:
+			ray.cast_to = movedir * tile_size
 
 func get_animation():
 	if movedir.x > 0:
