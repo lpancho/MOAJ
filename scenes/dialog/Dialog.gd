@@ -13,7 +13,14 @@ var locations = [
 					"Mathias: .....",
 					"Mathias: What is that sounds? I can hear someone talking.",
 					"Mathias: Hello! Who's there? Where am I?" 
-				]
+				],
+				"Functions": {
+					"Hide": [
+						
+					],
+					"Show": [
+					]
+				}
 			},
 			{
 				"Key": "Ladder-1",
@@ -24,7 +31,14 @@ var locations = [
 					"Girl with a soft voice: Please come back here. I need your help.",
 					"Mathias: Holy! Where are you? Come back to where?",
 					"Mathias: Please let me know more! Damn!" 
-				]
+				],
+				"Functions": {
+					"Hide": [
+						{ "Type": "Ladder", "Name": "Ladder-2" }
+					],
+					"Show": [
+					]
+				}
 			},
 			{
 				"Key": "Ladder-0",
@@ -35,13 +49,25 @@ var locations = [
 					"Elisa: I am Elisa. I wander here for a long time. It so nice to see someone. It's cold and dark here.",
 					"Mathias: Oh! Hi Elisa. Before I help you, please tell me why I am here.",
 					"Elise: ....." 
-				]
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
 			},
 			{
 				"Key": "END_GAME",
 				"Dialogues": [
 					"You finally did it!"
-				]
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
 			}
 		]
 	}
@@ -50,6 +76,9 @@ var locations = [
 onready var dialog_node = $Dialog
 
 var current_dialog = []
+var current_function_hide = []
+var current_function_show = []
+
 var current_dialog_line = 0
 var current_location_dialog_name
 signal end_dialog
@@ -83,7 +112,6 @@ func play_dialog():
 	current_dialog_line = 0
 	dialog_node.visible_characters = 0
 	dialog_node.text = current_dialog[current_dialog_line]
-	prints(current_dialog[current_dialog_line], current_dialog.size(), dialog_node.visible_characters)
 	$Skip/AnimBlink.play("default")
 	set_process(true)
 	pass
@@ -94,16 +122,28 @@ func close_dialog():
 	emit_signal("end_dialog", current_location_dialog_name)
 	pass
 
-func get_dialog(location_name, location_dialog_name):
+func get_dialogset(location_name, location_dialog_name):
+	var found = false
 	for location in locations:
 		if location.Name == location_name:
 			for dialog_set in location.DialogueSet:
 				if dialog_set.Key == location_dialog_name:
 					current_location_dialog_name = location_dialog_name
 					current_dialog = dialog_set.Dialogues
-					return true
+					current_function_hide = dialog_set.Functions.Hide
+					current_function_show = dialog_set.Functions.Show
+					found = true
+	return found
 
 func set_dialog_position(player_global_pos):
 	var x = floor(player_global_pos.x / 160) * 160
 	var y = (floor(player_global_pos.y / 144) * 144) + 114
 	rect_position = Vector2(x, y)
+
+func trigger_fxn():
+	for hide in current_function_hide:
+		if hide.Type == "Ladder":
+			get_parent().get_node("Ladders").get_node(hide.Name).deactivate()
+	for hide in current_function_show:
+		if hide.Type == "Ladder":
+			get_parent().get_node("Ladders").get_node(hide.Name).activate()

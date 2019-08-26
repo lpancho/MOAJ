@@ -55,7 +55,8 @@ func get_animation():
 	elif movedir.y < 0:
 		anim.play("walk_up")
 	else:
-		anim.play("idle")
+		var idle_anim = "idle_" + anim.animation.split("_")[1]
+		anim.play(idle_anim)
 
 func _on_Mathias_area_entered(area):
 	if area is Ladder:

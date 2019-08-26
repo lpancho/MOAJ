@@ -7,7 +7,7 @@ onready var dialog = $Dialog
 
 func _ready():
 	dialog.connect("end_dialog", self, "_on_End_Dialog")
-	var found = dialog.get_dialog(name, "START_GAME")
+	var found = dialog.get_dialogset(name, "START_GAME")
 	if found:
 		dialog.play_dialog()
 
@@ -29,9 +29,10 @@ func _on_Move_Ladder(current_ladder):
 	prints(current_ladder, next_ladder_name)
 	mathias.position = next_ladder.position
 	
-	var found = dialog.get_dialog(name, next_ladder_name)
+	var found = dialog.get_dialogset(name, next_ladder_name)
 	if found and !completed_dialog_keys.has(next_ladder_name):
 		mathias.set_process(false)
+		dialog.trigger_fxn()
 		dialog.set_dialog_position(mathias.global_position)
 		dialog.play_dialog()
 
@@ -41,7 +42,7 @@ func _on_End_Dialog(dialog_key):
 #		mathias.connect("interact", self, "_on_Interact")
 		mathias.set_process(true)
 		completed_dialog_keys.append("START_GAME")
-	elif dialog_key == "Ladder-1":
+	elif "Ladder" in dialog_key:
 		mathias.set_process(true)
 		completed_dialog_keys.append("Ladder-1")
 
