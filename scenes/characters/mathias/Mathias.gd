@@ -1,15 +1,17 @@
-extends Area2D
+extends KinematicBody2D
 class_name Player
 
 onready var ray = $RayCast2D
 onready var anim = $AnimatedSprite
+onready var emote = $Emote
 
 # movement
 var speed = 64
 var tile_size = 16
 var movedir = Vector2()
-var current_ladder = null
+var interactable_object = null
 signal move_ladder
+signal interact_to
 
 func _ready():
 	set_process(false)
@@ -17,12 +19,14 @@ func _ready():
 
 func _process(delta):
 	if !ray.is_colliding():
-		position += speed * movedir * delta
+		move_and_slide(speed * movedir)
 	
 	var SPACE = Input.is_action_just_pressed("ui_accept")
 	if SPACE:
-		if current_ladder:
-			emit_signal("move_ladder", current_ladder)
+		if interactable_object:
+			match interactable_object.group:
+				"Ladder": emit_signal("move_ladder", interactable_object.name)
+				"Characters": emit_signal("interact_to", interactable_object.name)
 		
 	get_movedir()
 	get_animation()
@@ -58,12 +62,5 @@ func get_animation():
 		var idle_anim = "idle_" + anim.animation.split("_")[1]
 		anim.play(idle_anim)
 
-func _on_Mathias_area_entered(area):
-	if area is Ladder:
-		current_ladder = area
-	pass # Replace with function body.
-
-func _on_Mathias_area_exited(area):
-	if area is Ladder:
-		current_ladder = null
-	pass # Replace with function body.
+func play_emote(name, is_once):
+	emote.show_emote(name, is_once)
