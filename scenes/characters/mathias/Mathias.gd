@@ -10,8 +10,14 @@ var speed = 64
 var tile_size = 16
 var movedir = Vector2()
 var interactable_object = null
+
+var keys = ["WHITE"]
+var artifacts = []
+
+# signals
 signal move_ladder
 signal interact_to
+signal acquire_item
 
 func _ready():
 	set_process(false)
@@ -27,6 +33,8 @@ func _process(delta):
 			match interactable_object.group:
 				"Ladder": emit_signal("move_ladder", interactable_object.name)
 				"Characters": emit_signal("interact_to", interactable_object.name)
+				"Keys": emit_signal("acquire_item", interactable_object, null)
+				"Chests": emit_signal("acquire_item", interactable_object, keys)
 		
 	get_movedir()
 	get_animation()

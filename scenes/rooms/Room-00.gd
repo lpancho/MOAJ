@@ -4,11 +4,21 @@ var completed_dialog_keys = []
 onready var mathias = $Mathias
 onready var ladders = $Ladders.get_children()
 onready var characters = $Characters.get_children()
+onready var keys = $Keys.get_children()
+onready var chests = $Chests.get_children()
+onready var artifacts = $Artifacts.get_children()
 onready var dialog = $Dialog
 
 func _ready():
 	dialog.connect("end_dialog", self, "_on_End_Dialog")
 	dialog.connect("play_emote", self, "_on_Play_Emote")
+	
+	for key in keys:
+		key.connect("acquire_key", self, "_on_Acquire_Key")
+	
+	for chest in chests:
+		chest.connect("acquire_artifact", self, "_on_Acquire_Artifact")
+	
 	var found = dialog.get_dialogset(name, "START_GAME")
 	if found:
 		start_room_dialog()
@@ -45,6 +55,7 @@ func _on_End_Dialog(dialog_key):
 	if dialog_key == "START_GAME":
 		mathias.connect("move_ladder", self, "_on_Move_Ladder")
 		mathias.connect("interact_to", self, "_on_Interact")
+		mathias.connect("acquire_item", self, "_on_Acquire_Item")
 		mathias.set_process(true)
 		completed_dialog_keys.append("START_GAME")
 	elif "Ladder" in dialog_key and not "Elise" in dialog_key:
@@ -85,3 +96,27 @@ func _on_Interact(key):
 	var found = dialog.get_dialogset(name, full_key)
 	if found:
 		start_room_dialog()
+
+func _on_Acquire_Item(first_item, second_item):
+	match first_item.group:
+		"Keys":
+			for key in keys:
+				if first_item.name == key.key:
+					key.get_key()
+		"Chests":
+			print("asdasdas")
+			for chest in chests:
+				if first_item.name == chest.chest_key and second_item.has(first_item.name):
+					chest.interact(first_item.name)
+	pass
+
+func _on_Acquire_Key(key):
+	mathias.keys.append(key)
+	pass
+
+func _on_Acquire_Artifact(artifact_key):
+	for artifact in artifacts:
+		if artifact.artifact_name == artifact_key:
+			artifact.show_artifact()
+	mathias.artifacts.append(artifact_key)
+	pass

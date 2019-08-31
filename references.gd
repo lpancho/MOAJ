@@ -7,3 +7,4 @@ extends Node
 # https://pipoya.itch.io/free-popup-emotes-pack
 # https://opengameart.org/content/lpc-heroine
 # https://www.metmuseum.org/art/collection/search#!/search?artist=Panini,%20Giovanni%20Paolo$Giovanni%20Paolo%20Panini
+# https://opengameart.org/content/key-icons

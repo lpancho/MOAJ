@@ -90,7 +90,7 @@ var locations = [
 					"Mathias: Okay! Okay! Fine! I believe you now! (pull his hand)",
 					"Elisa: If I remember correctly, Paolo said that there is a hidden passage here.",
 					"Elisa: But in order to know that you must find all of the 4 artifacts.",
-					"Mathias: What? Artif***s?",
+					"Mathias: What? Artifacts?",
 					"Elisa: Yes, Artifacts! There are 4 artifact drawings that when combined will show the passage of light.",
 					"Elisa: Here are the following artifacts that we must find.",
 					"Elisa: 1st: Figures in Classical Ruins",
@@ -113,6 +113,7 @@ var locations = [
 					"Hide": [
 					],
 					"Show": [
+						{ "Container": "Ladders", "Name": "Ladder-2" }
 					]
 				}
 			},
