@@ -11,7 +11,7 @@ var tile_size = 16
 var movedir = Vector2()
 var interactable_object = null
 
-var keys = ["WHITE"]
+var keys = []
 var artifacts = []
 
 # signals

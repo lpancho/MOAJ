@@ -38,5 +38,6 @@ func hide_emote():
 	$Anim.stop()
 
 func _on_Anim_animation_finished(anim_name):
-	hide_emote()
+	if anim_name == "default_once":
+		hide_emote()
 	pass # Replace with function body.

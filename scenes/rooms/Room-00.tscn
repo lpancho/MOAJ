@@ -130,7 +130,6 @@ key = "BLUE"
 color = Color( 0, 0.180392, 1, 1 )
 
 [node name="Chests" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Chest" parent="Chests" instance=ExtResource( 7 )]
 position = Vector2( 360, 40 )
@@ -153,31 +152,30 @@ chest_key = "VIOLET"
 region_details = Rect2( 64, 96, 16, 32 )
 
 [node name="Artifacts" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Artifact" parent="Artifacts" instance=ExtResource( 8 )]
-visible = false
 margin_left = 320.0
 margin_right = 320.0
+artifact_name = "WHITE"
 
 [node name="Artifact2" parent="Artifacts" instance=ExtResource( 8 )]
-visible = false
 margin_left = 480.0
 margin_right = 480.0
+artifact_name = "BLUE"
 
 [node name="Artifact3" parent="Artifacts" instance=ExtResource( 8 )]
-visible = false
 margin_left = 320.0
 margin_top = 145.0
 margin_right = 320.0
 margin_bottom = 145.0
+artifact_name = "YELLOW"
 
 [node name="Artifact4" parent="Artifacts" instance=ExtResource( 8 )]
-visible = false
 margin_left = 1.0
 margin_top = 144.0
 margin_right = 1.0
 margin_bottom = 144.0
+artifact_name = "VIOLET"
 
 [node name="Mathias" parent="." instance=ExtResource( 9 )]
 position = Vector2( 87, 71 )

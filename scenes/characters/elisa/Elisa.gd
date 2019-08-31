@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 onready var emote = $Emote
-onready var scope = $Scope
 
 func _ready():
 	pass
