@@ -26,15 +26,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="MOAJ"
-run/main_scene="res://scenes/rooms/Room-00.tscn"
+config/name="When in Gheltizka"
+run/main_scene="res://scenes/mainmenu/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=160
 window/size/height=144
-window/size/resizable=false
 window/size/test_width=640
 window/size/test_height=576
 window/dpi/allow_hidpi=true

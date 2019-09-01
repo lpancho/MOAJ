@@ -7,9 +7,11 @@ onready var characters = $Characters.get_children()
 onready var keys = $Keys.get_children()
 onready var chests = $Chests.get_children()
 onready var artifacts = $Artifacts.get_children()
+onready var timelapse = $Timelapse
 onready var dialog = $Dialog
 
 func _ready():
+	mathias.visible = false
 	dialog.connect("end_dialog", self, "_on_End_Dialog")
 	dialog.connect("play_emote", self, "_on_Play_Emote")
 	
@@ -19,9 +21,11 @@ func _ready():
 	for chest in chests:
 		chest.connect("acquire_artifact", self, "_on_Acquire_Artifact")
 	
-	var found = dialog.get_dialogset(name, "START_GAME")
-	if found:
-		start_room_dialog()
+	for artifact in artifacts:
+		artifact.connect("artifact_dialog", self, "_on_Artifact_Dialog")
+	
+	timelapse.visible = true
+	timelapse.play("distorted")
 
 func _on_Move_Ladder(current_ladder):
 	var ladder_id = int(current_ladder.split("-")[1])
@@ -52,15 +56,23 @@ func start_room_dialog():
 	dialog.play_dialog()
 
 func _on_End_Dialog(dialog_key):
+	mathias.set_process(true)
+	prints("_on_End_Dialog", dialog_key)
 	if dialog_key == "START_GAME":
 		mathias.connect("move_ladder", self, "_on_Move_Ladder")
 		mathias.connect("interact_to", self, "_on_Interact")
 		mathias.connect("acquire_item", self, "_on_Acquire_Item")
-		mathias.set_process(true)
 		completed_dialog_keys.append("START_GAME")
-	elif "Ladder" in dialog_key and not "Elise" in dialog_key:
-		mathias.set_process(true)
+	elif dialog_key == "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|4":
+		mathias.visible = false
+		for character in characters:
+			character.visible = false
+			
+		timelapse.visible = true
+		timelapse.play("normal")
+	elif "Ladder" in dialog_key:
 		completed_dialog_keys.append(dialog_key)
+	
 
 func play_dialog():
 	dialog.play_dialog()
@@ -85,7 +97,7 @@ func _on_Interact(key):
 	for dialog_key in completed_dialog_keys:
 		var key_checker = full_key + key
 		if key_checker == dialog_key:
-			full_key = key_checker + "|REPEAT"
+			full_key = key_checker + "|REPEAT|" + str(mathias.keys.size())
 			is_repeat = true
 			break
 		full_key += dialog_key + "~"
@@ -104,10 +116,13 @@ func _on_Acquire_Item(first_item, second_item):
 				if first_item.name == key.key:
 					key.get_key()
 		"Chests":
-			print("asdasdas")
+			var found = false
 			for chest in chests:
 				if first_item.name == chest.chest_key and second_item.has(first_item.name):
 					chest.interact(first_item.name)
+					found = true
+			if not found:
+				print("You don't have the key")
 	pass
 
 func _on_Acquire_Key(key):
@@ -115,8 +130,32 @@ func _on_Acquire_Key(key):
 	pass
 
 func _on_Acquire_Artifact(artifact_key):
+	var found = false
 	for artifact in artifacts:
-		if artifact.artifact_name == artifact_key:
+		if artifact.artifact_key == artifact_key:
+			mathias.set_process(false)
 			artifact.show_artifact()
-	mathias.artifacts.append(artifact_key)
+			mathias.artifacts.append(artifact_key)
+			found = true
+	if found:
+		prints("FOUND", artifact_key)
 	pass
+
+func _on_Artifact_Dialog(key):
+	var found = dialog.get_dialogset(name, key)
+	if found:
+		start_room_dialog()
+	pass
+
+func _on_Timelapse_animation_finished():
+	timelapse.visible = false
+	if timelapse.animation == "distorted":
+		mathias.visible = true
+		var found = dialog.get_dialogset(name, "START_GAME")
+		if found:
+			start_room_dialog()
+	elif timelapse.animation == "normal":
+		get_tree().change_scene("res://scenes/credits/Credits.tscn")
+		pass
+		
+	pass # Replace with function body.

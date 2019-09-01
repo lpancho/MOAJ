@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/objects/artifact/Artifact.gd" type="Script" id=1]
-[ext_resource path="res://assets/artifacts/1978_495_59.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/manaspc.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -16,8 +16,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.3, 0.3 ) ]
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.75, 0.75 ) ]
 }
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 2 )
 
 [node name="Artifact" type="Control"]
 script = ExtResource( 1 )
@@ -26,13 +30,23 @@ script = ExtResource( 1 )
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 140.0
-margin_bottom = 120.0
+margin_bottom = 124.0
 
 [node name="Sprite" type="Sprite" parent="MarginContainer"]
 position = Vector2( 57, 47 )
 scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 41.0
+margin_top = 97.0
+margin_right = 119.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Man Shading His Face with a Tricorne"
+align = 1
+autowrap = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

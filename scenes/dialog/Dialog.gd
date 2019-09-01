@@ -21,7 +21,8 @@ var locations = [
 				"Functions": {
 					"Hide": [
 						{ "Container": "Characters", "Name": "Elisa" },
-						{ "Container": "Ladders", "Name": "Ladder-2" }
+						{ "Container": "Ladders", "Name": "Ladder-2" },
+						{ "Container": "Ladders", "Name": "Ladder-23" },
 					],
 					"Show": [
 					]
@@ -93,9 +94,9 @@ var locations = [
 					"Mathias: What? Artifacts?",
 					"Elisa: Yes, Artifacts! There are 4 artifact drawings that when combined will show the passage of light.",
 					"Elisa: Here are the following artifacts that we must find.",
-					"Elisa: 1st: Figures in Classical Ruins",
-					"Elisa: 2nd: Ruins of a Basilica or Mausoleum",
-					"Elisa: 3rd: Man Shading His Face with a Tricorne",
+					"Elisa: 1st: Ruins of a Basilica or Mausoleum",
+					"Elisa: 2nd: Man Shading His Face with a Tricorne",
+					"Elisa: 3rd: Figures in Classical Ruins",
 					"Elisa: 4th: One of Etching Collection",
 					"Elisa: I know it is kinda hard to believe but maybe you can help me to find all of those?",
 					"Mathias: Sure! if that's only our way to go out here. ",
@@ -108,17 +109,21 @@ var locations = [
 					{ "Id" : 1, "Character_List": "Mathias", "Emote_List" : "heart" },
 					{ "Id" : 2, "Character_List": "Mathias,Characters|Elisa", "Emote_List" : "mute,mute" },
 					{ "Id" : 4, "Character_List": "Mathias", "Emote_List" : "curious" },
+					{ "Id" : 11, "Character_List": "Mathias", "Emote_List" : "ghost" },
+					{ "Id" : 12, "Character_List": "Mathias", "Emote_List" : "heart" },
+					{ "Id" : 13, "Character_List": "Mathias", "Emote_List" : "undecided" },
 				],
 				"Functions": {
 					"Hide": [
 					],
 					"Show": [
-						{ "Container": "Ladders", "Name": "Ladder-2" }
+						{ "Container": "Ladders", "Name": "Ladder-2" },
+						{ "Container": "Ladders", "Name": "Ladder-23" },
 					]
 				}
 			},
 			{
-				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT",
+				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|0",
 				"Dialogues": [
 					"Elisa: Here are the following artifacts that we must find.",
 					"Elisa: 1st: Figures in Classical Ruins",
@@ -136,9 +141,157 @@ var locations = [
 				}
 			},
 			{
+				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|1",
+				"Dialogues": [
+					"Elisa: Here are the following artifacts that we must find.",
+					"Elisa: 1st: Figures in Classical Ruins",
+					"Elisa: 2nd: Ruins of a Basilica or Mausoleum",
+					"Elisa: 3rd: Man Shading His Face with a Tricorne",
+					"Elisa: 4th: One of Etching Collection",
+					"Elisa: You have found 1 out of 4 items"
+				],
+				"Emotes": [
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|2",
+				"Dialogues": [
+					"Elisa: Here are the following artifacts that we must find.",
+					"Elisa: 1st: Figures in Classical Ruins",
+					"Elisa: 2nd: Ruins of a Basilica or Mausoleum",
+					"Elisa: 3rd: Man Shading His Face with a Tricorne",
+					"Elisa: 4th: One of Etching Collection",
+					"Elisa: You have found 2 out of 4 items"
+				],
+				"Emotes": [
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|3",
+				"Dialogues": [
+					"Elisa: Here are the following artifacts that we must find.",
+					"Elisa: 1st: Figures in Classical Ruins",
+					"Elisa: 2nd: Ruins of a Basilica or Mausoleum",
+					"Elisa: 3rd: Man Shading His Face with a Tricorne",
+					"Elisa: 4th: One of Etching Collection",
+					"Elisa: You have found 3 out of 4 items"
+				],
+				"Emotes": [
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "START_GAME~Ladder-1~Ladder-0~Elisa|REPEAT|4",
+				"Dialogues": [
+					"Elisa: You have found 4 out of 4 items",
+					"Elisa: I know you can do it!",
+					"Elisa: We can now move away to this world I created.",
+					"Elisa: I know now that you can live in this world on your own.",
+					"Elisa: I am happy to be part of you until this time.",
+					"Mathias: Wait! What are you saying?",
+					"Elisa: Goodbye for now Mathias. My son",
+					"Elisa: Pablo is your.... (Blinding Light)"
+				],
+				"Emotes": [
+					{ "Id" : 0, "Character_List": "Characters|Elisa", "Emote_List" : "exclamation" },
+					{ "Id" : 1, "Character_List": "Characters|Elisa", "Emote_List" : "heart" },
+					{ "Id" : 5, "Character_List": "Mathias", "Emote_List" : "exclamation" },
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
 				"Key": "END_GAME",
 				"Dialogues": [
 					"You finally did it!"
+				],
+				"Emotes": [
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "WHITE",
+				"Dialogues": [
+					"Mathias: Oh! This is the Ruins of a Basilica or Mausoleum!",
+					"Mathias: Should I tell Elisa that I have it now? It doesn't matter.",
+					"Mathias: I'll get the other items before I go back to her."
+				],
+				"Emotes": [
+					{ "Id" : 0, "Character_List": "Mathias", "Emote_List" : "bulb" },
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "BLUE",
+				"Dialogues": [
+					"Mathias: Is this Paolo that Elisa is talking about? Hmm!",
+					"Mathias: Added on my list! Better get going for other items!",
+				],
+				"Emotes": [
+					{ "Id" : 0, "Character_List": "Mathias", "Emote_List" : "curious" },
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "YELLOW",
+				"Dialogues": [
+					"Mathias: This is so beautiful! Figures in Classical Ruins!",
+					"Mathias: Added on my list! Better get going for other items!",
+				],
+				"Emotes": [
+					{ "Id" : 0, "Character_List": "Mathias", "Emote_List" : "exclamation" },
+				],
+				"Functions": {
+					"Hide": [
+					],
+					"Show": [
+					]
+				}
+			},
+			{
+				"Key": "VIOLET",
+				"Dialogues": [
+					"Mathias: One of Etching Collection!",
+					"Mathias: Should I try to get back to Elisa? Maybe I have them all!",
+				],
+				"Emotes": [
+					{ "Id" : 0, "Character_List": "Mathias", "Emote_List" : "bulb" },
 				],
 				"Functions": {
 					"Hide": [

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/trio-for-piano-cello-and-clarinet-by-kevin-macleod.ogg-5589fb37db72c1fa2a226fb3638320bc.oggstr"
+
+[deps]
+
+source_file="res://assets/musics/trio-for-piano-cello-and-clarinet-by-kevin-macleod.ogg"
+dest_files=[ "res://.import/trio-for-piano-cello-and-clarinet-by-kevin-macleod.ogg-5589fb37db72c1fa2a226fb3638320bc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
